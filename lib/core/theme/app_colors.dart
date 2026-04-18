@@ -24,6 +24,8 @@ class AppColors {
   static const Color onSurfaceVariant = Color(0xFF5A413D);
 
   static const Color surfaceContainerLow = Color(0xFFF3F3F3);
+  static const Color surfaceContainer = Color(0xFFEEEEEE);
+  static const Color surfaceContainerHigh = Color(0xFFE8E8E8);
   static const Color inversePrimary = Color(0xFFFFB4A8);
   static const Color error = Color(0xFFBA1A1A);
 }

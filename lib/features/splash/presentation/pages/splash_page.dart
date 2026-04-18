@@ -13,8 +13,8 @@ class SplashPage extends StatelessWidget {
 
   void _onSplashStateChanged(BuildContext context, SplashState state) {
     if (state is SplashNavigateToNext) {
-      // Navigate to Home or Login based on Clean Architecture
-      context.go('/home');
+      // Navigate to Onboarding Identity Setup
+      context.go('/onboarding');
     }
   }
 

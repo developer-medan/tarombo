@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tarombo/core/theme/app_colors.dart';
+import 'package:tarombo/features/onboarding/presentation/bloc/onboarding_bloc.dart';
+import 'package:tarombo/features/onboarding/presentation/pages/location_picker_page.dart';
+import 'package:tarombo/features/onboarding/presentation/pages/onboarding_identity_page.dart';
 import 'package:tarombo/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:tarombo/features/splash/presentation/bloc/splash_event.dart';
 import 'package:tarombo/features/splash/presentation/pages/splash_page.dart';
@@ -32,6 +35,17 @@ class _TaromboAppState extends State<TaromboApp> {
             create: (context) => SplashBloc()..add(const SplashInitialized()),
             child: const SplashPage(),
           ),
+        ),
+        GoRoute(
+          path: '/onboarding',
+          builder: (context, state) => BlocProvider(
+            create: (context) => OnboardingBloc(),
+            child: const OnboardingIdentityPage(),
+          ),
+        ),
+        GoRoute(
+          path: '/onboarding/location',
+          builder: (context, state) => const LocationPickerPage(),
         ),
         GoRoute(
           path: '/home',
