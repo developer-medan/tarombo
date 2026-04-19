@@ -1,11 +1,35 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tarombo/core/bloc/app_bloc_observer.dart';
 import 'package:tarombo/core/theme/app_colors.dart';
 import 'package:tarombo/core/routes/routes.dart';
 import 'package:tarombo/core/routes/route_names.dart';
 
 void main() {
-  runApp(const TaromboApp());
+  runZonedGuarded(
+    () {
+      WidgetsFlutterBinding.ensureInitialized();
+
+      // Initialize Bloc Observer
+      Bloc.observer = AppBlocObserver();
+
+      // Handle Flutter framework errors
+      FlutterError.onError = (details) {
+        FlutterError.presentError(details);
+        // TODO: Send to crashlytics/logging service
+      };
+
+      runApp(const TaromboApp());
+    },
+    (error, stack) {
+      // Handle async errors outside of Flutter framework
+      debugPrint('Caught async error: $error');
+      debugPrint('Stack trace: $stack');
+      // TODO: Send to crashlytics/logging service
+    },
+  );
 }
 
 class TaromboApp extends StatefulWidget {

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarombo/core/theme/app_colors.dart';
-import 'package:tarombo/features/lineage/presentation/bloc/lineage_bloc.dart';
-import 'package:tarombo/features/lineage/presentation/bloc/lineage_state.dart';
 import 'package:tarombo/features/lineage/presentation/widgets/gorga_painter.dart';
 import 'package:tarombo/features/lineage/presentation/widgets/lineage_app_bar.dart';
 import 'package:tarombo/features/lineage/presentation/widgets/lineage_bottom_nav_bar.dart';

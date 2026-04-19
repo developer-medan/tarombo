@@ -8,7 +8,7 @@ class LineageAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       pinned: true,
-      backgroundColor: AppColors.surface.withOpacity(0.8),
+      backgroundColor: AppColors.surface.withValues(alpha: 0.8),
       elevation: 0,
       centerTitle: false,
       leading: IconButton(icon: const Icon(Icons.menu, color: AppColors.primaryContainer), onPressed: () {}),

@@ -18,7 +18,7 @@ class LineageCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4))],
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.08), blurRadius: 10, offset: const Offset(0, 4))],
         border: Border(left: BorderSide(color: accentColor, width: 4)),
       ),
       child: Column(
@@ -42,7 +42,7 @@ class LineageCard extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8),
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                decoration: BoxDecoration(color: AppColors.error.withOpacity(0.1), borderRadius: BorderRadius.circular(4)),
+                decoration: BoxDecoration(color: AppColors.error.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(4)),
                 child: const Text('BORU', style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold, color: AppColors.error)),
               ),
             ),
