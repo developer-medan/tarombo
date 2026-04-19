@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tarombo/core/theme/app_colors.dart';
-import 'package:tarombo/features/onboarding/presentation/bloc/onboarding_bloc.dart';
-import 'package:tarombo/features/onboarding/presentation/pages/location_picker_page.dart';
-import 'package:tarombo/features/onboarding/presentation/pages/onboarding_identity_page.dart';
-import 'package:tarombo/features/splash/presentation/bloc/splash_bloc.dart';
-import 'package:tarombo/features/splash/presentation/bloc/splash_event.dart';
-import 'package:tarombo/features/splash/presentation/pages/splash_page.dart';
+import 'package:tarombo/core/routes/routes.dart';
+import 'package:tarombo/core/routes/route_names.dart';
 
 void main() {
   runApp(const TaromboApp());
@@ -26,35 +21,7 @@ class _TaromboAppState extends State<TaromboApp> {
   @override
   void initState() {
     super.initState();
-    _router = GoRouter(
-      initialLocation: '/',
-      routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => BlocProvider(
-            create: (context) => SplashBloc()..add(const SplashInitialized()),
-            child: const SplashPage(),
-          ),
-        ),
-        GoRoute(
-          path: '/onboarding',
-          builder: (context, state) => BlocProvider(
-            create: (context) => OnboardingBloc(),
-            child: const OnboardingIdentityPage(),
-          ),
-        ),
-        GoRoute(
-          path: '/onboarding/location',
-          builder: (context, state) => const LocationPickerPage(),
-        ),
-        GoRoute(
-          path: '/home',
-          builder: (context, state) => const Scaffold(
-            body: Center(child: Text('Home Page')),
-          ),
-        ),
-      ],
-    );
+    _router = GoRouter(initialLocation: RouteNames.root, routes: AppRoutes.routes);
   }
 
   @override
@@ -62,14 +29,7 @@ class _TaromboAppState extends State<TaromboApp> {
     return MaterialApp.router(
       title: 'Tarombo Toba',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.primary,
-          surface: AppColors.surface,
-          primary: AppColors.primary,
-        ),
-        useMaterial3: true,
-      ),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary, surface: AppColors.surface, primary: AppColors.primary), useMaterial3: true),
       routerConfig: _router,
     );
   }
