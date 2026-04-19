@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {
+/// [Failure] represents a domain-level error.
+/// It is a sealed class to allow exhaustive pattern matching in the UI.
+sealed class Failure extends Equatable {
   final String message;
   const Failure(this.message);
 
@@ -34,4 +36,8 @@ class ValidationFailure extends Failure {
 
 class AuthFailure extends Failure {
   const AuthFailure([super.message = 'Authentication Failure']);
+}
+
+class UnknownFailure extends Failure {
+  const UnknownFailure([super.message = 'An unknown error occurred']);
 }
