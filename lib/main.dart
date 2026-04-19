@@ -6,6 +6,7 @@ import 'package:tarombo/core/bloc/app_bloc_observer.dart';
 import 'package:tarombo/core/theme/app_colors.dart';
 import 'package:tarombo/core/routes/routes.dart';
 import 'package:tarombo/core/routes/route_names.dart';
+import 'package:tarombo/core/util/global_ui_handler.dart';
 
 void main() {
   runZonedGuarded(
@@ -45,7 +46,7 @@ class _TaromboAppState extends State<TaromboApp> {
   @override
   void initState() {
     super.initState();
-    _router = GoRouter(initialLocation: RouteNames.root, routes: AppRoutes.routes);
+    _router = GoRouter(navigatorKey: GlobalUIHandler().navigatorKey, initialLocation: RouteNames.root, routes: AppRoutes.routes);
   }
 
   @override

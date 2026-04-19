@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
+import 'package:tarombo/core/util/global_ui_handler.dart';
 
 class AppBlocObserver extends BlocObserver {
   final Logger _logger = Logger(printer: PrettyPrinter(methodCount: 0, errorMethodCount: 5, lineLength: 80, colors: true, printEmojis: true, dateTimeFormat: DateTimeFormat.none));
@@ -18,7 +19,11 @@ class AppBlocObserver extends BlocObserver {
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    _logger.e('onError -- ${bloc.runtimeType}, error: $error', error: error, stackTrace: stackTrace);
+    _logger.e('❌ Bloc Error in ${bloc.runtimeType}', error: error, stackTrace: stackTrace);
+
+    // Auto-trigger global UI error notification
+    GlobalUIHandler().showErrorSnackBar(error.toString());
+
     super.onError(bloc, error, stackTrace);
   }
 
